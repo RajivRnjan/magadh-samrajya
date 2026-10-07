@@ -210,6 +210,60 @@ try {
         }
     }
 
+
+    // 6. Stationery Quotations
+    $pdo->exec("CREATE TABLE IF NOT EXISTS stat_quotations (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        serial_no VARCHAR(50) UNIQUE NOT NULL,
+        quotation_date DATE NOT NULL,
+        customer_to TEXT NOT NULL,
+        subtotal DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        gst_rate DECIMAL(5,2) NOT NULL DEFAULT 18.00,
+        gst_amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        grand_total DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        amount_in_words TEXT NOT NULL,
+        status VARCHAR(20) DEFAULT 'pending',
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB;");
+
+    // 7. Stationery Quotation Items
+    $pdo->exec("CREATE TABLE IF NOT EXISTS stat_quotation_items (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        quotation_id INT NOT NULL,
+        particulars VARCHAR(255) NOT NULL,
+        qty INT NOT NULL DEFAULT 0,
+        rate DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        FOREIGN KEY (quotation_id) REFERENCES stat_quotations(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB;");
+
+    // 8. Stationery Invoices
+    $pdo->exec("CREATE TABLE IF NOT EXISTS stat_invoices (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        quotation_id INT DEFAULT NULL,
+        serial_no VARCHAR(50) UNIQUE NOT NULL,
+        bill_date DATE NOT NULL,
+        customer_to TEXT NOT NULL,
+        subtotal DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        gst_rate DECIMAL(5,2) NOT NULL DEFAULT 18.00,
+        gst_amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        grand_total DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        amount_in_words TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (quotation_id) REFERENCES stat_quotations(id) ON DELETE SET NULL
+    ) ENGINE=InnoDB;");
+
+    // 9. Stationery Invoice Items
+    $pdo->exec("CREATE TABLE IF NOT EXISTS stat_invoice_items (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        invoice_id INT NOT NULL,
+        particulars VARCHAR(255) NOT NULL,
+        qty INT NOT NULL DEFAULT 0,
+        rate DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+        FOREIGN KEY (invoice_id) REFERENCES stat_invoices(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB;");
+
 } catch (PDOException $e) {
     die("Database connection/initialization failed. Details: " . $e->getMessage());
 }

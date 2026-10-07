@@ -137,19 +137,19 @@ if (isset($_GET['status'])) {
                     <img src="assets/mslogo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
                 <div class="sidebar-brand">
-                    <h3><?php echo htmlspecialchars($settings['company_name'] ?? 'MAGADH SAMARAJYA'); ?></h3>
+                    <h3><?php echo htmlspecialchars($settings['company_name'] ?? 'MAGADH SAMARAJYA');; ?></h3>
                     <p>Billing Panel</p>
                 </div>
             </div>
             
-            <ul class="sidebar-menu">
+            <ul class="sidebar-menu"><li class="sidebar-header-title" style="padding: 10px 20px; font-size: 11px; text-transform: uppercase; color: #888; font-weight: 700; margin-top: 10px;">Transport ERP</li>
                 <li class="sidebar-item">
                     <a href="index.php">
                         <i class="fa-solid fa-chart-pie"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item <?php echo !$isEdit ? 'active' : ''; ?>">
+                <li class="sidebar-item active">
                     <a href="invoice.php">
                         <i class="fa-solid fa-plus-circle"></i>
                         <span>Create Invoice</span>
@@ -160,7 +160,37 @@ if (isset($_GET['status'])) {
                         <i class="fa-solid fa-receipt"></i>
                         <span>All Invoices</span>
                     </a>
+                </li><li class="sidebar-header-title" style="padding: 10px 20px; font-size: 11px; text-transform: uppercase; color: #888; font-weight: 700; margin-top: 10px;">Stationery ERP</li>
+                <li class="sidebar-item">
+                    <a href="stat_dashboard.php">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Stat Dashboard</span>
+                    </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="stat_quotation.php">
+                        <i class="fa-solid fa-file-invoice"></i>
+                        <span>Create Quotation</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="stat_all_quotations.php">
+                        <i class="fa-solid fa-list-alt"></i>
+                        <span>All Quotations</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="stat_invoice.php">
+                        <i class="fa-solid fa-plus-square"></i>
+                        <span>Create Invoice</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="stat_all_invoices.php">
+                        <i class="fa-solid fa-receipt"></i>
+                        <span>All Invoices</span>
+                    </a>
+                </li><li class="sidebar-header-title" style="padding: 10px 20px; font-size: 11px; text-transform: uppercase; color: #888; font-weight: 700; margin-top: 10px;">System</li>
                 <li class="sidebar-item">
                     <a href="settings.php">
                         <i class="fa-solid fa-gears"></i>
@@ -172,11 +202,11 @@ if (isset($_GET['status'])) {
             <div class="sidebar-footer">
                 <div class="user-info">
                     <div class="user-avatar">
-                        <?php echo strtoupper(substr($_SESSION['name'] ?? 'A', 0, 1)); ?>
+                        <?php echo strtoupper(substr($_SESSION['name'] ?? 'A', 0, 1));; ?>
                     </div>
                     <div class="user-details">
-                        <h4><?php echo htmlspecialchars($_SESSION['name'] ?? 'Administrator'); ?></h4>
-                        <p><?php echo ucfirst(str_replace('_', ' ', $_SESSION['role'] ?? 'super_admin')); ?></p>
+                        <h4><?php echo htmlspecialchars($_SESSION['name'] ?? 'Administrator');; ?></h4>
+                        <p><?php echo ucfirst(str_replace('_', ' ', $_SESSION['role'] ?? 'super_admin'));; ?></p>
                     </div>
                 </div>
                 <a href="logout.php" class="logout-icon" title="Log Out">
