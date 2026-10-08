@@ -137,8 +137,9 @@ if (empty($to_name) && !empty($doc['customer_to'])) {
             </div>
             <div class="company-box">
                 <h1><?php echo htmlspecialchars($settings['company_name']); ?></h1>
-                <p><?php echo htmlspecialchars($settings['address']); ?></p>
-                <p>Mob. : <?php echo htmlspecialchars($settings['mobiles']); ?></p>
+                <p>Bhadodih, Diwan Garden, Jhumri Telaiya, Koderma - 825409, Jharkhand<br>
+                Bansilal chowk, Hazaribagh, Jharkhand, 825301</p>
+                <p>Mob. : 88253 51729, 94702 20659</p>
             </div>
             <div class="info-box">
                 <p>Invoice No. <?php echo htmlspecialchars($doc['serial_no']); ?></p>

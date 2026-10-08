@@ -137,13 +137,14 @@ if (empty($to_name) && !empty($doc['customer_to'])) {
             </div>
             <div class="company-box">
                 <h1><?php echo htmlspecialchars($settings['company_name']); ?></h1>
-                <p><?php echo htmlspecialchars($settings['address']); ?></p>
-                <p>Mob. : <?php echo htmlspecialchars($settings['mobiles']); ?></p>
+                <p>Bhadodih, Diwan Garden, Jhumri Telaiya, Koderma - 825409, Jharkhand<br>
+                Bansilal chowk, Hazaribagh, Jharkhand, 825301</p>
+                <p>Mob. : 88253 51729, 94702 20659</p>
             </div>
             <div class="info-box">
-                <p>Invoice No. <?php echo htmlspecialchars($doc['serial_no']); ?></p>
+                <p>Quotation No. <?php echo htmlspecialchars($doc['serial_no']); ?></p>
                 <div style="border-bottom: 1px dotted #000; margin-bottom: 5px;"></div>
-                <p>Bill Date <?php echo date('d-m-Y', strtotime($doc[$dateCol])); ?></p>
+                <p>Date <?php echo date('d-m-Y', strtotime($doc[$dateCol])); ?></p>
                 <div style="border-bottom: 1px dotted #000;"></div>
             </div>
         </div>
@@ -218,14 +219,14 @@ if (empty($to_name) && !empty($doc['customer_to'])) {
                 <p>A/CNo: 1940458835, IFSC Code: IDIB000H036,</p>
                 <p>MAGADHSAMRAJYA ALLAHABAD BANK HAZARIBAGH</p>
                 <p style="font-weight:bold; margin-top:5px;">TERMS & CONDITIONS:</p>
-                <p>1. Goods once sold will not be taken back or exchanged.</p>
-                <p>2. Subject to Hazaribagh Jurisdiction only.</p>
-                <p>3. Payment due within 15 days of invoice.</p>
+                <p>&#9642; All rates mentioned above are inclusive of applicable GST.</p>
+                <p>&#9642; Prices are valid for 15 days from the date of quotation.</p>
+                <p>&#9642; Delivery schedule will be confirmed upon formal purchase order confirmation.</p>
                 <p>E. & O.E.</p>
             </div>
             <div class="sign-box">
                 
-                <img src="assets/stamp.png" style="width:200px; max-height:80px; object-fit:contain;" onerror="this.style.display='none'">
+                <img src="assets/stamp.png" style="width:200px; max-height:80px; object-fit:contain; margin-top: 20px; margin-bottom: -10px;" onerror="this.style.display='none'">
                 <p style="margin-top:20px;">For: MAGADH SAMRAJYA</p>
                 <p>(Auth. Signatory)</p>
             </div>
