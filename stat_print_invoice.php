@@ -67,7 +67,7 @@ if (empty($to_name) && !empty($doc['customer_to'])) {
             .action-bar-wrapper { display: none !important; }
             body { background: white; padding: 0; }
         }
-        body { margin: 0; padding: 20px; font-family: Arial, sans-serif; background: #525659; display: flex; flex-direction: column; align-items: center; }
+        body { margin: 0; padding: 20px; font-family: 'Calibri', 'Helvetica', 'Arial', sans-serif; background: #525659; display: flex; flex-direction: column; align-items: center; }
         .page { background: white; width: 210mm; min-height: 297mm; padding: 10mm; box-sizing: border-box; position: relative; }
         @media print {
             body { background: white; padding: 0; }
@@ -75,21 +75,21 @@ if (empty($to_name) && !empty($doc['customer_to'])) {
             @page { size: A4; margin: 10mm; }
         }
         
-        .header-title { text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 5px; font-family: 'Times New Roman', Times, serif; }
+        .header-title { text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
         
-        .header-box { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 10px; }
+        .header-box { display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 15px; }
         
         .logo-box { width: 120px; }
         .logo-box img { max-width: 100%; height: auto; }
         
         .company-box { text-align: center; flex: 1; }
-        .company-box h1 { font-family: 'Times New Roman', Times, serif; font-size: 32px; margin: 0; letter-spacing: 1px; font-weight: bold; }
+        .company-box h1 { font-size: 28px; margin: 0; letter-spacing: 0.5px; font-weight: bold; text-transform: uppercase; }
         .company-box p { margin: 2px 0; font-size: 15px; }
         
-        .info-box { border: 2px solid #000; padding: 5px 10px; width: 200px; text-align: left; }
+        .info-box { border: 2px solid #000; padding: 5px 10px; width: 160px; text-align: left; }
         .info-box p { margin: 5px 0; font-size: 15px; }
         
-        .customer-box { border-bottom: 2px solid #000; padding: 5px 0; display: flex; justify-content: space-between; font-size: 15px; }
+        .customer-box { border-bottom: 2px solid #000; padding: 5px 0; display: flex; justify-content: space-between; font-size: 15px; margin-bottom: 15px; }
         .customer-left { width: 65%; }
         .customer-right { width: 35%; text-align: right; }
         
@@ -107,7 +107,7 @@ if (empty($to_name) && !empty($doc['customer_to'])) {
         .terms-box p { margin: 3px 0; }
         
         .sign-box { text-align: center; position: relative; width: 250px; }
-        .sign-box h3 { color: blue; font-family: 'Times New Roman', Times, serif; font-size: 20px; margin: 0; margin-bottom: 10px; }
+        .sign-box h3 { color: blue; font-size: 18px; margin: 0; margin-bottom: 10px; }
         .sign-box p { margin: 5px 0; }
     </style>
 </head>
