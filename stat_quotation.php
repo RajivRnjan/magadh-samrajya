@@ -21,6 +21,7 @@ $qData = [
     'subtotal' => '0.00',
     'gst_rate' => '18.00',
     'gst_amount' => '0.00',
+    'transport_charge' => '0.00',
     'grand_total' => '0.00',
     'amount_in_words' => ''
 ];
@@ -238,6 +239,16 @@ function getSidebar($activePage) {
                                     </td>
                                     <td style="border-bottom: 1px solid var(--border-color);"></td>
                                 </tr>
+                                <!-- Transporting Charge -->
+                                <tr class="total-row" style="background-color: rgba(0, 0, 0, 0.02);">
+                                    <td colspan="4" class="text-right" style="font-weight: 500; font-size: 14px; border-bottom: 1px solid var(--border-color);">
+                                        TRANSPORTING CHARGE:
+                                    </td>
+                                    <td class="text-right" style="padding: 4px 8px; border-bottom: 1px solid var(--border-color);">
+                                        <input type="number" step="0.01" name="transport_charge" id="transport_charge" class="input-cell text-right num-input" style="font-weight: 500; font-size: 14px; background-color: var(--bg-input); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 4px; padding: 4px 8px; width: 100%; box-sizing: border-box;" value="<?php echo htmlspecialchars($qData['transport_charge'] ?? '0.00'); ?>">
+                                    </td>
+                                    <td style="border-bottom: 1px solid var(--border-color);"></td>
+                                </tr>
                                 <!-- Grand Total -->
                                 <tr class="total-row" style="background-color: rgba(0, 0, 0, 0.04);">
                                     <td colspan="4" class="text-right" style="font-weight: 700; font-size: 15px;">GRAND TOTAL RS.</td>
@@ -249,7 +260,7 @@ function getSidebar($activePage) {
                                 <tr class="total-words-row">
                                     <td colspan="6">
                                         <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
-                                            <span style="font-weight: 600; white-space: nowrap;">Amount in Words:</span>
+                                             <span style="font-weight: 600; white-space: nowrap;">Amount in Words:</span>
                                             <input type="text" name="amount_in_words" id="amountInWords" class="input-cell" style="font-style: italic; background-color: rgba(255, 255, 255, 0.05); font-weight: 500;" readonly value="<?php echo htmlspecialchars($qData['amount_in_words']); ?>">
                                         </div>
                                     </td>
@@ -308,7 +319,8 @@ function getSidebar($activePage) {
                 let gstRate = parseFloat(document.getElementById('gst_rate').value || 18);
                 let gstAmount = subtotal * (gstRate / 100);
                 document.getElementById('gst_amount').value = gstAmount.toFixed(2);
-                let grandTotal = subtotal + gstAmount;
+                let transportCharge = parseFloat(document.getElementById('transport_charge').value || 0);
+                let grandTotal = subtotal + gstAmount + transportCharge;
                 document.getElementById('grand_total').value = grandTotal.toFixed(2);
                 document.getElementById('amountInWords').value = numberToWords(Math.round(grandTotal));
             }
@@ -324,6 +336,7 @@ function getSidebar($activePage) {
             });
 
             document.getElementById('gst_rate').addEventListener('input', updateTotals);
+            document.getElementById('transport_charge').addEventListener('input', updateTotals);
 
             tableBody.addEventListener('click', (e) => {
                 if (e.target.closest('.delete-row-btn')) {

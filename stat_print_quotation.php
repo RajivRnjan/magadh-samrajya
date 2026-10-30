@@ -201,6 +201,12 @@ if (empty($to_name) && !empty($doc['customer_to'])) {
                     <td colspan="4" class="text-right" style="border-right: 1px solid #000; font-weight: bold; font-size: 15px;">GST @ <?php echo rtrim(rtrim($doc['gst_rate'], '0'), '.'); ?>%:</td>
                     <td class="text-right" style="font-weight: bold; font-size: 15px;"><?php echo number_format($doc['gst_amount'], 2); ?></td>
                 </tr>
+                <?php if (!empty($doc['transport_charge']) && floatval($doc['transport_charge']) > 0): ?>
+                <tr>
+                    <td colspan="4" class="text-right" style="border-right: 1px solid #000; font-weight: bold; font-size: 15px;">TRANSPORTING CHARGES:</td>
+                    <td class="text-right" style="font-weight: bold; font-size: 15px;"><?php echo number_format($doc['transport_charge'], 2); ?></td>
+                </tr>
+                <?php endif; ?>
                 <tr>
                     <td colspan="4" class="text-right" style="border-right: 1px solid #000; font-weight: bold; font-size: 15px;">GRAND TOTAL RS.:</td>
                     <td class="text-right" style="font-weight: bold; font-size: 15px;"><?php echo number_format($doc['grand_total'], 2); ?></td>

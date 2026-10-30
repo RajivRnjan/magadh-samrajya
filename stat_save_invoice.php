@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subtotal = floatval($_POST['subtotal'] ?? 0);
     $gst_rate = floatval($_POST['gst_rate'] ?? 0);
     $gst_amount = floatval($_POST['gst_amount'] ?? 0);
+    $transport_charge = floatval($_POST['transport_charge'] ?? 0);
     $grand_total = floatval($_POST['grand_total'] ?? 0);
     $amount_in_words = trim($_POST['amount_in_words'] ?? '');
     $items = $_POST['items'] ?? [];
@@ -20,12 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $pdo->beginTransaction();
         if ($invId) {
-            $stmt = $pdo->prepare("UPDATE stat_invoices SET serial_no=?, bill_date=?, customer_name=?, customer_to=?, customer_gst=?, subtotal=?, gst_rate=?, gst_amount=?, grand_total=?, amount_in_words=?, quotation_id=? WHERE id=?");
-            $stmt->execute([$serial_no, $bill_date, $customer_name, $customer_to, $customer_gst, $subtotal, $gst_rate, $gst_amount, $grand_total, $amount_in_words, $quotation_id, $invId]);
+            $stmt = $pdo->prepare("UPDATE stat_invoices SET serial_no=?, bill_date=?, customer_name=?, customer_to=?, customer_gst=?, subtotal=?, gst_rate=?, gst_amount=?, transport_charge=?, grand_total=?, amount_in_words=?, quotation_id=? WHERE id=?");
+            $stmt->execute([$serial_no, $bill_date, $customer_name, $customer_to, $customer_gst, $subtotal, $gst_rate, $gst_amount, $transport_charge, $grand_total, $amount_in_words, $quotation_id, $invId]);
             $pdo->prepare("DELETE FROM stat_invoice_items WHERE invoice_id=?")->execute([$invId]);
         } else {
-            $stmt = $pdo->prepare("INSERT INTO stat_invoices (quotation_id, serial_no, bill_date, customer_name, customer_to, customer_gst, subtotal, gst_rate, gst_amount, grand_total, amount_in_words) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$quotation_id, $serial_no, $bill_date, $customer_name, $customer_to, $customer_gst, $subtotal, $gst_rate, $gst_amount, $grand_total, $amount_in_words]);
+            $stmt = $pdo->prepare("INSERT INTO stat_invoices (quotation_id, serial_no, bill_date, customer_name, customer_to, customer_gst, subtotal, gst_rate, gst_amount, transport_charge, grand_total, amount_in_words) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$quotation_id, $serial_no, $bill_date, $customer_name, $customer_to, $customer_gst, $subtotal, $gst_rate, $gst_amount, $transport_charge, $grand_total, $amount_in_words]);
             $invId = $pdo->lastInsertId();
         }
 
